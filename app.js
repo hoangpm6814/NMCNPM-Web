@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,6 +15,12 @@ var loginRouter = require('./routes/dang-nhap');
 var registerRouter = require('./routes/dang-ki');
 var singleProductRouter = require('./routes/mot-san-pham');
 var userInfoRouter = require('./routes/thong-tin');
+
+mongoose.connect('mongodb+srv://admin:' + encodeURI('123123123') + '@cluster0-94sja.mongodb.net/ShoppingDB', { useNewUrlParser: true }, function(err) {
+    if (err) throw err;
+    console.log('Successfully connected');
+
+});
 
 var app = express();
 
@@ -35,7 +42,7 @@ app.use('/gio-hang', cartRouter);
 app.use('/thanh-toan', checkOutRouter);
 app.use('/dang-nhap', loginRouter);
 app.use('/dang-ki', registerRouter);
-app.use('/ot-chuong', singleProductRouter);
+app.use('/mot-san-pham', singleProductRouter);
 app.use('/thong-tin', userInfoRouter);
 
 // catch 404 and forward to error handler
