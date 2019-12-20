@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models/user');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 
 router.get('/', function (req, res, next) {
@@ -38,15 +41,26 @@ router.post('/', function (req, res, next) {
                 else 
                 {
                     console.log("Vo else");
-                    user.save(function (err, user_ok) {
-                        if (err) {
-                            console.log(err);
-                            res.render('dang-ki', {
-                                error: ""
-                            });
-                        } else if (user_ok) {
-                            res.redirect('/');
-                        } 
+                    // user.save(function (err, user_ok) {
+                    //     if (err) {
+                    //         console.log(err);
+                    //         res.render('dang-ki', {
+                    //             error: ""
+                    //         });
+                    //     } else if (user_ok) {
+                    //         res.redirect('/');
+                    //     } 
+                    // });
+                    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+                        db.user.create({
+                            username: req.body.username,
+                            email: req.body.email,
+                            password: hash
+                        }).then(function (data) {
+                            if (data) {
+                                res.redirect('/');
+                            }
+                        });
                     });
                 }
             });
