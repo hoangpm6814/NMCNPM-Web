@@ -16,7 +16,7 @@ var registerRouter = require('./routes/dang-ki');
 var singleProductRouter = require('./routes/mot-san-pham');
 var userInfoRouter = require('./routes/thong-tin');
 
-mongoose.connect('mongodb+srv://admin:' + encodeURI('123123123') + '@cluster0-94sja.mongodb.net/ShoppingDB', { useNewUrlParser: true }, function(err) {
+mongoose.connect('mongodb+srv://admin:' + encodeURI('123123123') + '@cluster0-uvim6.mongodb.net/ShoppingDB', { useNewUrlParser: true }, function(err) {
     if (err) throw err;
     console.log('Successfully connected');
 
