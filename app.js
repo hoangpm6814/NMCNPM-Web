@@ -6,6 +6,7 @@ var logger = require('morgan');
 const mongoose = require("mongoose");
 var passport = require('./passport/passport');
 var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 
 var indexRouter = require('./routes/index');
@@ -36,8 +37,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// app.use(session({
+//     secret: 'cats'
+// }));
+
 app.use(session({
-    secret: 'cats'
+    secret: 'mysupersecret',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 3 * 60 * 60 * 1000 } // 3 hours
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

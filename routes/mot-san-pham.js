@@ -5,7 +5,7 @@ var product = require('../models/product');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('mot-san-pham', { title: 'Ớt chuông' });
+    res.render('mot-san-pham', { title: 'Ớt chuông', user: req.user });
 });
 router.get('/ot-chuong', function (req, res, next) {
 
