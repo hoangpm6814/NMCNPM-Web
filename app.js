@@ -62,7 +62,7 @@ app.use('/gio-hang', cartRouter);
 app.use('/thanh-toan', checkOutRouter);
 app.use('/dang-nhap', loginRouter);
 app.use('/dang-ki', registerRouter);
-app.use('/mot-san-pham', singleProductRouter);
+app.use('/chi-tiet', singleProductRouter);
 app.use('/thong-tin', userInfoRouter);
 
 // catch 404 and forward to error handler
