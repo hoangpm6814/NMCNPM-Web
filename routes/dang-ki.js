@@ -23,13 +23,13 @@ router.post('/', function (req, res, next) {
         }
         else 
         {
-            let user = new db.user({
+            let user = new db({
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
                 authen: "1"
             });
-            db.user.countDocuments({username: req.body.username }, function (err, count) { 
+            db.countDocuments({username: req.body.username }, function (err, count) { 
                 console.log(count);
                 if (err) console.log("err");
                 if(count>0){
@@ -52,7 +52,7 @@ router.post('/', function (req, res, next) {
                     //     } 
                     // });
                     bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-                        db.user.create({
+                        db.create({
                             username: req.body.username,
                             email: req.body.email,
                             password: hash
