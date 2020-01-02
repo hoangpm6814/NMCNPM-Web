@@ -14,6 +14,21 @@
 		alert('Không có sản phẩm nào có QR Code này');
 	}
 }
+			if (sessionStorage.getItem('barCode') != null) {
+	var barCode = sessionStorage.getItem('barCode');
+	sessionStorage.removeItem('barCode');
+	var flag = false;
+	{{#each products}}
+		if (('{{barcode}}' == barCode)) {
+			flag = true;
+			window.location.assign('/san-pham/chi-tiet?productId={{_id}}');
+		}
+	{{/each}}
+	if (flag == false) {
+		alert('Không có sản phẩm nào có BarCode này');
+	}
+}	
+
 ">
 <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
 	<div class="container">
