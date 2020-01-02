@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
+<script type="text/javascript" src="/js/qrcode.js"></script>
+
 </head>
 
 <body class="goto-here">
@@ -89,6 +91,10 @@
 
                     <li class="nav-item cta cta-colored"><a href="/gio-hang" class="nav-link"><span
                                 class="icon-shopping_cart"></span>[0]</a></li>
+
+                    <input type="file" id="file" name="file" style="display: none;" >
+                    <input type="button" value="Tìm kiếm mã QR Code" onclick="document.getElementById('file').click(); ">
+                    <span id="content"></span>
                 </ul>
             </div>
         </div>
@@ -206,6 +212,9 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="/js/google-map.js"></script>
     <script src="/js/main.js"></script>
+
+    <!--To Read QR Code-->
+<script type="text/javascript" src="/js/qrReader.js"></script>
 
 </body>
 

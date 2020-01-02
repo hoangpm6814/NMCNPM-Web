@@ -17,11 +17,11 @@ module.exports.singleProduct = singleProductController;
 const allProductController = async(req, res, next) => {
     const category = req.query.category;
     if (category == null) {
-        Product.find((err, callback) => {
+        Product.find({}).exec(function (err, product){ 
             if (err)
                 res.sendStatus(404);
-            res.render('san-pham', { title: 'Sản phẩm - Tất cả', products: callback, user: req.user });
-        })
+            res.render('san-pham', { title: 'Sản phẩm - Tất cả', products: product, user: req.user });
+        });
     }
 }
 module.exports.allProduct = allProductController;

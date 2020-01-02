@@ -8,7 +8,8 @@ var product = new mongoose.Schema({
     price: { type: Number, required: true },
     sold: { type: Number, required: false },
     available: { type: Number, required: false },
-    category: { type: String, required: false }
+    category: { type: String, required: false },
+    qrcode: {type: String, required: false}
 });
 
 module.exports = mongoose.model('product', product, 'product');
