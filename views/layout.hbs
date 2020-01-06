@@ -29,12 +29,9 @@
     <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
-<<<<<<< HEAD
     <script src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/qrcode.js"></script>
 
-=======
->>>>>>> parent of b5a3fe1... tìm kiếm chi tiết sp bằng mã QR Code
 </head>
 
 <body class="goto-here">
@@ -94,7 +91,6 @@
 
 
                     <li class="nav-item cta cta-colored"><a href="/gio-hang" class="nav-link"><span
-<<<<<<< HEAD
                                 class="icon-shopping_cart"></span>
                                  {{#if session.cart.totalItems }}
                 [{{session.cart.totalItems}}]
@@ -106,29 +102,10 @@
                     <input type="file" id="file" name="file" style="display: none;" >
                     <input type="button" value="Tìm kiếm mã QR Code" onclick="document.getElementById('file').click(); ">
                     <span id="content"></span>
-=======
-                                class="icon-shopping_cart"></span>[0]</a></li>
->>>>>>> parent of b5a3fe1... tìm kiếm chi tiết sp bằng mã QR Code
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="container mb-3">
-    <div class="container row">
-            <div>
-                <form action="/san-pham" method="GET">
-                    <input id="barCodeInput" type="text" placeholder="Tìm kiếm mã barcode" name="search">
-                    <button class="btn-primary" type="submit" onclick="sessionStorage.setItem('barCode', document.getElementById('barCodeInput').value); return true; ">Search</button>
-                </form>
-            </div>
-            <div class="ml-5">
-                <input type="file" id="file" name="file" style="display: none;">
-                <input class="btn-primary" type="button" value="Tìm kiếm mã QR Code" onclick="document.getElementById('file').click(); ">
-                <span id="content"></span>
-            </div>
-    </div>
-    </div>
     <!-- END nav -->
 
     {{{body}}}
@@ -242,6 +219,9 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="/js/google-map.js"></script>
     <script src="/js/main.js"></script>
+
+    <!--To Read QR Code-->
+<script type="text/javascript" src="/js/qrReader.js"></script>
 
 </body>
 

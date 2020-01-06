@@ -338,6 +338,14 @@
 
      setInterval(function() { makeTimer(); }, 1000);
 
-
+     var qrText = $("#content");
+     qrText.on('DOMSubtreeModified',function(){
+        sessionStorage.setItem("qrCode", qrText.text());
+        var currentURL = window.location.href;
+        qrText.hide();
+        window.location.assign('/san-pham');
+        //alert(qrCode);
+        //qrText.hide();
+    });
 
  })(jQuery);

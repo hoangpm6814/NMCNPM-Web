@@ -18,16 +18,11 @@ module.exports.singleProduct = singleProductController;
 const allProductController = async(req, res, next) => {
     const category = req.query.category;
     if (category == null) {
-        Product.find((err, callback) => {
+        Product.find({}).exec(function (err, product){ 
             if (err)
                 res.sendStatus(404);
-<<<<<<< HEAD
             res.render('san-pham', { title: 'Sản phẩm - Tất cả', products: product, user: req.user,session:req.session });
         });
-=======
-            res.render('san-pham', { title: 'Sản phẩm - Tất cả', products: callback, user: req.user });
-        })
->>>>>>> parent of b5a3fe1... tìm kiếm chi tiết sp bằng mã QR Code
     }
 }
 module.exports.allProduct = allProductController;
