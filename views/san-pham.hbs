@@ -14,21 +14,6 @@
 		alert('Không có sản phẩm nào có QR Code này');
 	}
 }
-			if (sessionStorage.getItem('barCode') != null) {
-	var barCode = sessionStorage.getItem('barCode');
-	sessionStorage.removeItem('barCode');
-	var flag = false;
-	{{#each products}}
-		if (('{{barcode}}' == barCode)) {
-			flag = true;
-			window.location.assign('/san-pham/chi-tiet?productId={{_id}}');
-		}
-	{{/each}}
-	if (flag == false) {
-		alert('Không có sản phẩm nào có BarCode này');
-	}
-}	
-
 ">
 <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
 	<div class="container">
@@ -40,26 +25,6 @@
 		</div>
 	</div>
 </div>
-
-<div class="container mt-4">
-    <div class="container row">
-		<div>
-			<form action="/san-pham" method="GET">
-				<input id="barCodeInput" type="text" placeholder="Tìm kiếm mã barcode" name="search" required="required">
-				<button class="btn-primary" type="submit" onclick="
-					sessionStorage.setItem('barCode', document.getElementById('barCodeInput').value); 
-					return true; 
-				">Search</button>
-			</form>
-		</div>
-		<div class="ml-5">
-			<input type="file" id="file" name="file" style="display: none;">
-			<input class="btn-primary" type="button" value="Tìm kiếm mã QR Code" onclick="document.getElementById('file').click(); ">
-			<span id="content"></span>
-		</div>
-    </div>
-</div>
-
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -96,7 +61,7 @@
 									class="add-to-cart d-flex justify-content-center align-items-center text-center">
 									<span><i class="ion-ios-menu"></i></span>
 								</a>
-								<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+								<a href="/gio-hang/add/{{_id}}/1" class="buy-now d-flex justify-content-center align-items-center mx-1">
 									<span><i class="ion-ios-cart"></i></span>
 								</a>
 								<a href="#" class="heart d-flex justify-content-center align-items-center ">

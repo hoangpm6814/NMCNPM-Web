@@ -56,7 +56,7 @@
 						<div class="w-100"></div>
 						<div class="input-group col-md-6 d-flex mb-3">
 							<span class="input-group-btn mr-2">
-								<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+								<button type="button" class="quantity-left-minus btn " data-type="minus" id="minus" data-field="">
 									<i class="ion-ios-remove"></i>
 								</button>
 							</span>
@@ -73,7 +73,7 @@
 							<p style="color: #000;">Có sẵn {{{sp.available}}} kg</p>
 						</div>
 					</div>
-					<p><a href="/gio-hang" class="btn btn-black py-3 px-5">Thêm vào giỏ</a></p>
+					<p><a  data-id={{sp._id}} id="addcart" class="btn btn-black py-3 px-5">Thêm vào giỏ</a></p>
 				</div>
 			</div>
 		</div>
@@ -244,5 +244,7 @@
 				</div>
 			</div> --}}
 		</div>
+
 	</div>
 </section>
+<script src = "/js/singleProduct.js"></script>

@@ -348,6 +348,4 @@
         //qrText.hide();
     });
 
-    
-
  })(jQuery);

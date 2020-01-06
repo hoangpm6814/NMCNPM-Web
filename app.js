@@ -15,6 +15,7 @@ var productRouter = require('./routes/san-pham');
 var aboutRouter = require('./routes/ve-chung-toi');
 var cartRouter = require('./routes/gio-hang');
 var checkOutRouter = require('./routes/thanh-toan');
+
 // var loginRouter = require('./routes/dang-nhap');
 // var registerRouter = require('./routes/dang-ki');
 // var singleProductRouter = require('./routes/mot-san-pham');
@@ -80,5 +81,6 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 
 module.exports = app;

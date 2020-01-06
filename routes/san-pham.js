@@ -28,7 +28,6 @@ const productController = require('../controllers/productController');
 router.get('/', async(req, res, next) => {
     productController.allProduct(req, res, next);
 });
-
 router.get('/chi-tiet', async(req, res, next) => {
     productController.singleProduct(req, res, next);
 });

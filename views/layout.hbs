@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="/js/qrcode.js"></script>
+    <script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/qrcode.js"></script>
 
 </head>
 
@@ -90,10 +91,19 @@
 
 
                     <li class="nav-item cta cta-colored"><a href="/gio-hang" class="nav-link"><span
-                                class="icon-shopping_cart"></span>[0]</a></li>
+                                class="icon-shopping_cart"></span>
+                                 {{#if session.cart.totalItems }}
+                [{{session.cart.totalItems}}]
+                {{else}}
+                [0]
+                {{/if}}
+                                </a></li>
+
+                    <input type="file" id="file" name="file" style="display: none;" >
+                    <input type="button" value="Tìm kiếm mã QR Code" onclick="document.getElementById('file').click(); ">
+                    <span id="content"></span>
                 </ul>
             </div>
-
         </div>
     </nav>
     <!-- END nav -->
@@ -192,7 +202,7 @@
                 stroke="#F96D00" /></svg></div>
 
 
-    <script src="/js/jquery.min.js"></script>
+    
     <script src="/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -211,7 +221,7 @@
     <script src="/js/main.js"></script>
 
     <!--To Read QR Code-->
-    <script type="text/javascript" src="/js/qrReader.js"></script>
+<script type="text/javascript" src="/js/qrReader.js"></script>
 
 </body>
 
