@@ -1,5 +1,5 @@
 var db = require('../models/user');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const register = async(req, res, next) => {
     if (req.body.username && req.body.email && req.body.password) {
