@@ -53,3 +53,22 @@ const removeProduct = async(req,res,next) => {
 }
 
 module.exports.removeProduct = removeProduct;
+
+
+module.exports.postThanhToan = function(req, res, next) {
+    if (!req.session.cart) {
+        return res.redirect('/gio-hang');
+    }
+    var cart = new Cart(req.session.cart);
+    var order = new Order({
+        user: req.user,
+        cart: cart,
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone
+    });
+    order.save(function(err, result) {
+        req.session.cart = null; // Sau khi thanh toan de trong gio hang (trong session)
+        res.redirect('/');
+    });
+};

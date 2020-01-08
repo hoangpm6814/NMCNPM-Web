@@ -21,5 +21,19 @@ router.get('/remove/:id', function(req, res, next) {
     cartController.removeProduct(req,res,next);
 });
 
+router.post('/thanh-toan', isLoggedIn, function(req, res, next) {
+    cartController.postThanhToan(req, res, next);
+});
+
+module.exports = router;
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect("../users/dang-nhap");
+    }
+}
+
 
 module.exports = router;
