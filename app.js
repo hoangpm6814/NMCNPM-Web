@@ -15,6 +15,7 @@ var productRouter = require('./routes/san-pham');
 var aboutRouter = require('./routes/ve-chung-toi');
 var cartRouter = require('./routes/gio-hang');
 var checkOutRouter = require('./routes/thanh-toan');
+var thongKeDoanhThuRouter = require('./routes/thong-ke-doanh-thu');
 
 // var loginRouter = require('./routes/dang-nhap');
 // var registerRouter = require('./routes/dang-ki');
@@ -32,6 +33,20 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+const handlebars = require('hbs');
+handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
+    lvalue = parseInt(lvalue);
+    rvalue = parseInt(rvalue);
+  
+    return {
+      '+': lvalue + rvalue,
+      '-': lvalue - rvalue,
+      '*': lvalue * rvalue,
+      '/': lvalue / rvalue,
+      '%': lvalue % rvalue
+    }[operator];
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -61,6 +76,8 @@ app.use('/san-pham', productRouter);
 app.use('/ve-chung-toi', aboutRouter);
 app.use('/gio-hang', cartRouter);
 app.use('/thanh-toan', checkOutRouter);
+
+app.use('/thong-ke-doanh-thu', thongKeDoanhThuRouter);
 // app.use('/dang-nhap', loginRouter);
 // app.use('/dang-ki', registerRouter);
 // app.use('/chi-tiet', singleProductRouter);

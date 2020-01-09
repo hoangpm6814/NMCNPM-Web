@@ -11,24 +11,24 @@ function foo() {
     });
     $("#xuatHoaDonBtn").click(function () {
         var firstName1 = $("[name = 'first-name']").eq(0).val();
-        var firstName2 = $("[name = 'first-name']").eq(1).val();
-        var lastName1 = $("[name = 'last-name']").eq(0).val();
-        var lastName2 = $("[name = 'last-name']").eq(1).val();
+        //var firstName2 = $("[name = 'first-name']").eq(1).val();
+        //var lastName1 = $("[name = 'last-name']").eq(0).val();
+        //var lastName2 = $("[name = 'last-name']").eq(1).val();
         var email1 = $("[name = 'email']").eq(0).val();
-        var email2 = $("[name = 'email']").eq(1).val();
+        //var email2 = $("[name = 'email']").eq(1).val();
         var address1 = $("[name = 'address']").eq(0).val();
-        var address2 = $("[name = 'address']").eq(1).val();
-        var city1 = $("[name = 'city']").eq(0).val();
-        var city2 = $("[name = 'city']").eq(1).val();
+        //var address2 = $("[name = 'address']").eq(1).val();
+        //var city1 = $("[name = 'city']").eq(0).val();
+        //var city2 = $("[name = 'city']").eq(1).val();
         var tel1 = $("[name = 'tel']").eq(0).val();
-        var tel2 = $("[name = 'tel']").eq(1).val();
-        if (firstName1 == "" || firstName2 == "" || lastName1 == "" || lastName2 == "" || email1 == "" || email2 == ""
-        || address1 == "" || address2 == "" || city1 == "" || city2 == "" || tel1 == "" || tel2 == "") {
+        //var tel2 = $("[name = 'tel']").eq(1).val();
+        
+        if (firstName1 == "" || email1 == "" || address1 == "" || tel1 == "") {
             window.alert("Vui lòng điền đầy đủ thông tin");
             return;
         }
 
-        if (!validateEmail(email1) || !validateEmail(email2)) {
+        if (!validateEmail(email1)) {
             window.alert("Email không hợp lệ");
             return;
         }
@@ -41,19 +41,19 @@ function foo() {
         txt = txt + "Điện thoại: 0977777879 \n";
         txt = txt + "Email: info@yourdomain.com \n \n";
         txt = txt + "THÔNG TIN NGƯỜI MUA \n";
-        txt = txt + "Họ tên: " + firstName1 + lastName1 + "\n";
+        txt = txt + "Họ tên: " + firstName1 + "\n";
         txt = txt + "Email: " + email1 + " \n";
         txt = txt + "Địa chỉ: " + address1 + " \n";
-        txt = txt + "Thành phố: " + city1 + " \n";
+        // txt = txt + "Thành phố: " + city1 + " \n";
         txt = txt + "Điện thoại: " + tel1 + " \n \n";
         txt = txt + "ĐƠN HÀNG ĐÃ ĐẶT\n";
-        txt = txt + sessionStorage.getItem("donHang") + "Thành tiền: " + sessionStorage.getItem("sumPriceOfAllItem") + "\n \n";
-        txt = txt + "ĐỊA CHỈ VẬN CHUYỂN \n";
-        txt = txt + "Họ tên: " + firstName2 + lastName2 + "\n";
-        txt = txt + "Email: " + email2 + "\n";
-        txt = txt + "Địa chỉ: " + address2 + "\n";
-        txt = txt + "Thành phố: " + city2 + "\n";
-        txt = txt + "Điện thoại: " + tel2 + "\n";
+        txt = txt + sessionStorage.getItem("donHang") + "Thành tiền: " + sessionStorage.getItem("sumPriceOfAllItem") + "\n";
+        // txt = txt + "ĐỊA CHỈ VẬN CHUYỂN \n";
+        // txt = txt + "Họ tên: " + firstName2 + lastName2 + "\n";
+        // txt = txt + "Email: " + email2 + "\n";
+        // txt = txt + "Địa chỉ: " + address2 + "\n";
+        // txt = txt + "Thành phố: " + city2 + "\n";
+        // txt = txt + "Điện thoại: " + tel2 + "\n";
 
         //doc.addFont('VNI-Times-normal.ttf', 'VNI-Times', 'normal');
         doc.setFont('Times New Roman');
@@ -88,14 +88,24 @@ function foo() {
             SecureToken: "10e93cbf-74b9-4c3f-bc8b-0aa3bb398d58",
             Username: "hoangvinh175@gmail.com",
             Password: "8C19E4325D9D94B1BD5BB90C0303BEC8E2F6",
-            To: email2,
+            To: email1,
             From: "hoangvinh175@gmail.com",
             Subject: "HÓA ĐƠN CỬA HÀNG RAU",
             Body: txt.replace(/\n/g, "<br/>")
         }).then(
-            message => alert("Kết quả gửi đến email " + email2 + ": " + message)
+            message => alert("Kết quả gửi đến email " + email1 + ": " + message)
         );
+    });
 
+    $("#datHangBtn").click(function () {
+        $("[name = 'donHangArrayObject']").eq(0).val(sessionStorage.getItem("donHangArrayObject"));
+        var infoUser = getInfoUser();
+        if (infoUser == "") {
+            alert('Vui lòng điền chính xác thông tin');
+            return false;
+        }
+        $("[name = 'infoUser']").eq(0).val(infoUser);
+        alert("Đặt hàng thành công");
     });
 
     function change_alias(alias) {
@@ -124,4 +134,18 @@ function foo() {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
+
+    function getInfoUser() {
+        var firstName = $("[name = 'first-name']").eq(0).val();
+        var email = $("[name = 'email']").eq(0).val();
+        var address = $("[name = 'address']").eq(0).val();
+        var tel = $("[name = 'tel']").eq(0).val();
+        if (!validateEmail(email) || firstName == "" || email == "" || address == "" || tel == "") {
+            return "";
+        }
+        return firstName + "|" + email + "|" + address + "|" + tel;
+    }
+
+
+
 })(jQuery);

@@ -53,16 +53,20 @@
 
         var donHangHTML = "";
         var donHang = "";
+        var donHangArrayObject = "";
         for (i = 0; i < productName.length; i++) {
             donHangHTML = donHangHTML + '<div class="order-col"> <div>' + quantity[i] + "x " + productName[i] + "</div>";
             donHangHTML = donHangHTML + "<div>" + total[i] + "</div>";
-            donHang = donHang + quantity[i] + "x " + productName[i] + "\n" + total[i] + "\n"; 
+            donHang = donHang + quantity[i] + "x " + productName[i] + "\n" + total[i] + "\n";
+            donHangArrayObject = donHangArrayObject + productName[i] + "|" + total[i] + "|" + quantity[i] + ";";
         }
         donHang.trimRight();
+        donHangArrayObject = donHangArrayObject.substring(0, donHangArrayObject.length - 1);
 
         sessionStorage.setItem("donHangHTML", donHangHTML);
         sessionStorage.setItem("sumPriceOfAllItem", sumPriceOfAllItem);
         sessionStorage.setItem("donHang", donHang);
+        sessionStorage.setItem("donHangArrayObject", donHangArrayObject);
         sessionStorage.setItem("daTinhTien", "true");
     });
 

@@ -1,0 +1,60 @@
+<title>{{{title}}}</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<body id="trangThongKeDoanhThu">
+    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Giỏ
+                            hàng</span></p>
+                    <h1 class="mb-0 bread">Giỏ hàng</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr class="info">
+                    <th>Tên sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số luợng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderData}}
+                {{#each cart}}
+                <tr class="success">
+                    <td>{{tenSanPham}}</td>
+                    <td>{{donGia}}</td>
+                    <td>{{soLuong}}</td>
+                    <td></td>
+                </tr>
+                {{/each}}
+                {{/each}}
+            </tbody>
+        </table>
+        <div class="order-col">
+            <div><strong>TỔNG TIỀN:</strong><span id="thongKeTongTien"></span></div>
+            <div><strong class="order-total"></strong></div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script>
+    var tongTien = 0;
+    $(".success").each(function () {
+        var donGia = parseInt($(this).children().eq(1).text());
+        var soLuong = parseInt($(this).children().eq(2).text());
+        $(this).children().eq(3).text(donGia * soLuong);
+        tongTien = tongTien + donGia * soLuong;
+    });
+    $("#thongKeTongTien").text(tongTien);
+</script>
