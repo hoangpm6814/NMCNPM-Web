@@ -10,9 +10,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dang-ki', function(req, res, next) {
+
     res.render('dang-ki', {
         title: "Đăng kí",
-        error: ""
+        error: "",
+        session:req.session
     });
 });
 
@@ -20,7 +22,7 @@ router.post('/dang-ki', function(req, res, next) {
     userController.register(req, res, next);
 });
 router.get('/dang-nhap', (req, res, next) => {
-    res.render('dang-nhap', { title: 'Đăng nhập', error: "" });
+    res.render('dang-nhap', { title: 'Đăng nhập', error: "",session:req.session });
 });
 
 router.post('/dang-nhap', passport.authenticate('local', {
@@ -30,7 +32,7 @@ router.post('/dang-nhap', passport.authenticate('local', {
     successMessage: 'Đăng nhập thành công'
 }));
 router.get('/thong-tin', function(req, res, next) {
-    res.render('thong-tin', { title: 'Thông tin người dùng', user: req.user });
+    res.render('thong-tin', { title: 'Thông tin người dùng', user: req.user,session:req.session });
 });
 router.get("/dang-xuat", (req, res) => {
     req.logout();

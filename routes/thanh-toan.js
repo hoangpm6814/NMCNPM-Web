@@ -6,7 +6,7 @@ const cartController = require("../controllers/cartController");
 router.get('/', isLoggedIn, function(req, res, next) {
     
     res.render('thanh-toan', { title: 'Thanh toán', 
-    user: req.user 
+    user: req.user ,session:req.session
 });
 });
 

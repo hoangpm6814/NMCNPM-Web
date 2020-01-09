@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const register = async(req, res, next) => {
     if (req.body.username && req.body.email && req.body.password) {
-        console.log(req.body.password.length);
+        //console.log(req.session);
         if (req.body.password.length < 7) 
         {
             res.render('dang-ki', {
-                error: 'Password ít nhất 7 kí tự!'
+                error: 'Password ít nhất 7 kí tự!',
             });
         }
         else 
@@ -24,7 +24,8 @@ const register = async(req, res, next) => {
                 if(count>0){
                     //document exists
                     res.render('dang-ki', {
-                        error: 'Username đã tồn tại!'
+                        error: 'Username đã tồn tại!',
+                        
                     });
                 }
                 else 
@@ -59,7 +60,8 @@ const register = async(req, res, next) => {
         }
     } else {
         res.render('dang-ki', {
-            error: 'Hãy nhập đầy đủ thông tin!'
+            error: 'Hãy nhập đầy đủ thông tin!',
+           
         })
     }
 }

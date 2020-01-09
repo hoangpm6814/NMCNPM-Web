@@ -6,7 +6,8 @@ exports.thongKeDoanhThu = async function(req, res, next) {
         res.render('thong-ke-doanh-thu', { 
             title: 'Thống kê doanh thu',
             orderData: order,
-            user: req.user
+            user: req.user,
+            session: req.session
         });
     });
     
