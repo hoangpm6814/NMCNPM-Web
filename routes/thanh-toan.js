@@ -3,7 +3,7 @@ var router = express.Router();
 const cartController = require("../controllers/cartController");
 
 /* GET home page. */
-router.get('/',isLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
     
     res.render('thanh-toan', { title: 'Thanh toán', 
     user: req.user 
