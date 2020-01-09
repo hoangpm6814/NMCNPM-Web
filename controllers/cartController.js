@@ -1,8 +1,9 @@
 var express = require('express');
+var router = express.Router();
 var Product = require('../models/product');
 var Category = require('../models/category');
 var Cart = require("../models/cart");
-var router = express.Router();
+
 
 
 var modelOrder = require('../models/order');
