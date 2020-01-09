@@ -3,7 +3,7 @@ var router = express.Router();
 const cartController = require("../controllers/cartController");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',isLoggedIn, function(req, res, next) {
     
     res.render('thanh-toan', { title: 'Thanh toán', 
     user: req.user 
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 // router.post('/', isLoggedIn, function(req, res, next) {
 //     cartController.postThanhToan(req, res, next);
 // });
-router.post('/', isLoggedIn, function(req, res, next) {
+router.post('/', function(req, res, next) {
     //console.log("don hang array object: " + req.body.donHangArrayObject + "\n");
     //console.log("info user: " + req.body.infoUser + "\n");
     //res.render('thanh-toan', { title: 'Thanh toán', user: req.user });
